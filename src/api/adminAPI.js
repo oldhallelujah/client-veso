@@ -45,3 +45,45 @@ export const getDetailsStore = async (storeID) => {
       console.log(error);
     });
 };
+
+export const updateActiveStore = async (data) => {
+  return await axios
+    .post(`${url}/update-active-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const getStaff = async () => {
+  return await axios
+    .get(`${url}/get-staff`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const addStaffStore = async (data) => {
+  return await axios
+    .post(`${url}/add-staff-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
