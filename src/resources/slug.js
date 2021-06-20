@@ -3,4 +3,7 @@ export default {
   storeManager: "/admin/store-manager",
   createStore: "/admin/create-store",
   detailsStore: "/admin/details-store",
+  staffManager: "/admin/staff-manager",
+  createStaff: "/admin/create-staff",
+  detailsStaff: "/admin/details-staff",
 };

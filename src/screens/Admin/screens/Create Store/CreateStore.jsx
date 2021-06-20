@@ -5,7 +5,7 @@ import { createStore } from "../../../../api/adminAPI";
 import { useHistory } from "react-router-dom";
 import slug from "../../../../resources/slug";
 
-export default function HomeAdmin(props) {
+export default function CreateStore(props) {
   props.handleLoading(false);
   const [storeName, setStoreName] = useState("");
   const [address, setAddress] = useState("");

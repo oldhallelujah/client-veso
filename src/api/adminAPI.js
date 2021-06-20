@@ -74,9 +74,65 @@ export const getStaff = async () => {
     });
 };
 
+export const getDetailsStaff = async (staffID) => {
+  return await axios
+    .get(`${url}/get-staff/${staffID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 export const addStaffStore = async (data) => {
   return await axios
     .post(`${url}/add-staff-store`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const createStaff = async (data) => {
+  return await axios
+    .post(`${url}/create-account`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const blockUser = async (data) => {
+  return await axios
+    .post(`${url}/block-user`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const unblockUser = async (data) => {
+  return await axios
+    .post(`${url}/unblock-user`, data, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {
