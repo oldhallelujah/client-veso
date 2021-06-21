@@ -1,38 +1,38 @@
 import React, { useState, useEffect } from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import { getStaff, addStaffStore } from "../../api/adminAPI";
+import { getAllStore } from "../../api/adminAPI";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-export default function AddStaffComponent(props) {
-  const [staff, setStaff] = useState([]);
+export default function AddStoreComponent(props) {
+  const [store, setStore] = useState([]);
   const [reload, setReload] = useState(false);
   useEffect(async () => {
-    await getStaff().then((res) => {
+    await getAllStore().then((res) => {
       console.log(res);
-      setStaff(res.data);
+      setStore(res.data);
     });
   }, [reload]);
 
-  const handleAddStaff = async (staffID) => {
-    const data = {
-      staffID: staffID,
-      storeID: props.data?.store._id,
-    };
-    await addStaffStore(data).then((res) => {
-      setReload(!reload);
-      props.handleReload();
-    });
-  };
+  //   const handleAddStaff = async (staffID) => {
+  //     const data = {
+  //       staffID: staffID,
+  //       storeID: props.data?.store._id,
+  //     };
+  //     await addStaffStore(data).then((res) => {
+  //       setReload(!reload);
+  //       props.handleReload();
+  //     });
+  //   };
 
-  const lists = staff.map((e, index) => {
-    let store;
-    if (e.store == "") {
-      store = <span style={{ color: "red" }}>Chưa có đại lý</span>;
+  const lists = store.map((e, index) => {
+    let staff;
+    if (e.staff == "") {
+      staff = <span style={{ color: "red" }}>Chưa có nhân viên</span>;
     } else {
-      store = <span style={{ color: "green" }}>{e.store.storeName}</span>;
+      staff = <span style={{ color: "green" }}>{e.staff.fullName}</span>;
     }
     return (
       <ListItem
@@ -42,7 +42,7 @@ export default function AddStaffComponent(props) {
         className="mt-2"
       >
         <ListItemText>
-          {e.staff.fullName} - <span>{store}</span>{" "}
+          {e.store.storeName} - <span>{staff}</span>{" "}
         </ListItemText>
       </ListItem>
     );
@@ -54,7 +54,7 @@ export default function AddStaffComponent(props) {
       open={props.open}
       style={{ textAlign: "center" }}
     >
-      <DialogTitle id="simple-dialog-title">Thêm nhân viên đại lý</DialogTitle>
+      <DialogTitle id="simple-dialog-title">Thêm đại lý </DialogTitle>
       <div style={{ paddingBottom: "30px", width: "300px" }}>
         <List>{lists}</List>
       </div>

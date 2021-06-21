@@ -40,13 +40,13 @@ export default function CardStoreComponent(props) {
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
-            {props.data?.storeName}
+            {props.data?.store.storeName}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            {props.data?.address}
+            {props.data?.store.address}
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            {converDate(props.data?.createAt)}
+            {converDate(props.data?.store.createAt)}
           </Typography>
         </CardContent>
       </div>

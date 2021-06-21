@@ -21,7 +21,7 @@ export default function HomeAdmin(props) {
   };
   const lists = store
     .sort((a, b) => {
-      return new Date(b.createAt) - new Date(a.createAt);
+      return new Date(b.store.createAt) - new Date(a.store.createAt);
     })
     .map((e, index) => {
       return (
@@ -30,7 +30,7 @@ export default function HomeAdmin(props) {
           xs={12}
           key={index}
           className="mt-3"
-          onClick={() => handleClick(e._id)}
+          onClick={() => handleClick(e.store._id)}
         >
           <CardStoreComponent data={e} />
         </Grid>

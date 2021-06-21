@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ProfileStaffComponent from "../../../../components/Profile/Profile-Staff.component";
+import StoreStaffComponent from "../../../../components/Store Staff/StoreStaff.component";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -72,8 +73,11 @@ export default function TabStaff(props) {
           handleReload={props.handleReload}
         />
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        {/* <CategoryAuthor data={props.data} handleReload={props.handleReload} /> */}
+      <TabPanel value={value} index={1} className="tabs-content">
+        <StoreStaffComponent
+          data={props.data}
+          handleReload={props.handleReload}
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* <TableNewsAuthorComponent

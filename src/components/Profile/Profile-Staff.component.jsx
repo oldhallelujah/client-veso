@@ -24,23 +24,29 @@ export default function ProfileStaffComponent(props) {
   const status = (status) => {
     if (!status) {
       return (
-        <Chip
-          variant="outlined"
-          size="small"
-          style={{ color: "green" }}
-          label="Hoạt động"
-          onClick={handleClickOpen}
-        />
+        <>
+          <Chip
+            variant="outlined"
+            size="small"
+            style={{ color: "green" }}
+            label="Hoạt động"
+            onClick={handleClickOpen}
+          />
+          <i className="fas fa-pen ml-2"></i>
+        </>
       );
     } else {
       return (
-        <Chip
-          variant="outlined"
-          size="small"
-          style={{ color: "red" }}
-          label="Dừng hoạt động"
-          onClick={handleClickOpen}
-        />
+        <>
+          <Chip
+            variant="outlined"
+            size="small"
+            style={{ color: "red" }}
+            label="Dừng hoạt động"
+            onClick={handleClickOpen}
+          />
+          <i className="fas fa-pen ml-2"></i>
+        </>
       );
     }
   };
