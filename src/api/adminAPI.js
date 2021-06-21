@@ -143,3 +143,46 @@ export const unblockUser = async (data) => {
       console.log(error);
     });
 };
+
+export const getSchedule = async (ownerID) => {
+  return await axios
+    .get(`${url}/get-schedule/${ownerID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const addSchedule = async (data) => {
+  console.log(data);
+  return await axios
+    .post(`${url}/add-schedule/`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const removeSchedule = async (data) => {
+  return await axios
+    .post(`${url}/remove-schedule/`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

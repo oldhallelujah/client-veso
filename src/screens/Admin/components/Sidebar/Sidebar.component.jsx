@@ -152,27 +152,6 @@ export default function SideBarComponent(props) {
           </ListItem>
         </List>
       </Collapse>
-
-      <ListItem
-        button
-        onClick={() => handleClickSlug("category", slug.category)}
-        className={param == "category" ? "active" : " "}
-      >
-        <ListItemIcon>
-          <InsertChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Danh mục" />
-      </ListItem>
-      <ListItem
-        button
-        onClick={() => handleClickSlug("ads", slug.ads)}
-        className={param == "ads" ? "active" : " "}
-      >
-        <ListItemIcon>
-          <InsertChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Quảng cáo" />
-      </ListItem>
     </List>
     // </div>
   );

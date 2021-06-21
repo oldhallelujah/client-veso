@@ -6,7 +6,19 @@ import AddStoreComponent from "../Add Store/AddStore.component";
 import Button from "@material-ui/core/Button";
 
 export default function StoreStaffComponent(props) {
-  console.log(props);
+  const [open, setOpen] = useState(false);
+
+  const handleClickModal = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleReload = () => {
+    setOpen(false);
+    props.handleReload();
+  };
+
   const store = () => {
     if (props.data?.store) {
       return (
@@ -34,6 +46,7 @@ export default function StoreStaffComponent(props) {
               style={{ width: "100%", padding: "10px" }}
               type="submit"
               className="mt-3"
+              onClick={handleClickModal}
             >
               Thay đổi đại lý
             </Button>
@@ -50,6 +63,7 @@ export default function StoreStaffComponent(props) {
             style={{ width: "100%", padding: "10px" }}
             type="submit"
             className="mt-3"
+            onClick={handleClickModal}
           >
             Thêm đại lý
           </Button>
@@ -63,7 +77,12 @@ export default function StoreStaffComponent(props) {
         <span>Thông tin đại lý:</span>
       </div>
       {store()}
-      <AddStoreComponent />
+      <AddStoreComponent
+        data={props}
+        open={open}
+        onClose={handleClose}
+        handleReload={handleReload}
+      />
     </div>
   );
 }

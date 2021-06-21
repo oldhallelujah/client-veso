@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ProfileStaffComponent from "../../../../components/Profile/Profile-Staff.component";
 import StoreStaffComponent from "../../../../components/Store Staff/StoreStaff.component";
+import ScheduleStaffComponent from "../../../../components/Schedule Staff/ScheduleStaff.component";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -79,17 +80,11 @@ export default function TabStaff(props) {
           handleReload={props.handleReload}
         />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        {/* <TableNewsAuthorComponent
+      <TabPanel value={value} index={2} className="tabs-content">
+        <ScheduleStaffComponent
           data={props.data}
           handleReload={props.handleReload}
-        /> */}
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
+        />
       </TabPanel>
     </div>
   );

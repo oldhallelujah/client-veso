@@ -5,6 +5,7 @@ import { getAllStore } from "../../api/adminAPI";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { addStaffStore } from "../../api/adminAPI";
 
 export default function AddStoreComponent(props) {
   const [store, setStore] = useState([]);
@@ -15,19 +16,22 @@ export default function AddStoreComponent(props) {
       setStore(res.data);
     });
   }, [reload]);
+  console.log(props);
 
-  //   const handleAddStaff = async (staffID) => {
-  //     const data = {
-  //       staffID: staffID,
-  //       storeID: props.data?.store._id,
-  //     };
-  //     await addStaffStore(data).then((res) => {
-  //       setReload(!reload);
-  //       props.handleReload();
-  //     });
-  //   };
+  const handleAddStaff = async (storeID) => {
+    const data = {
+      staffID: props.data?.data.staff._id,
+      storeID: storeID,
+    };
+    console.log(data);
+    await addStaffStore(data).then((res) => {
+      setReload(!reload);
+      props.handleReload();
+    });
+  };
 
   const lists = store.map((e, index) => {
+    console.log(e);
     let staff;
     if (e.staff == "") {
       staff = <span style={{ color: "red" }}>Chưa có nhân viên</span>;
@@ -38,7 +42,7 @@ export default function AddStoreComponent(props) {
       <ListItem
         button
         style={{ textAlign: "center", backgroundColor: "#ccc" }}
-        onClick={() => handleAddStaff(e.staff._id)}
+        onClick={() => handleAddStaff(e.store._id)}
         className="mt-2"
       >
         <ListItemText>

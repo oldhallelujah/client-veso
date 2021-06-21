@@ -3,6 +3,7 @@ import { Route, Redirect, HashRouter } from "react-router-dom";
 import { isLoggedIn, checkRole } from "./auth/auth";
 
 import HomeAdmin from "./screens/Admin/screens/Home-Admin";
+import HomeStaff from "./screens/Staff/screens/HomeStaff";
 import HomeLogin from "./screens/Login/screens/HomeLogin";
 function App() {
   return (
@@ -13,6 +14,17 @@ function App() {
         render={() =>
           isLoggedIn() && checkRole("admin") ? (
             <HomeAdmin />
+          ) : (
+            <Redirect to="/auth/login" />
+          )
+        }
+      ></Route>
+
+      <Route
+        path="/staff"
+        render={() =>
+          isLoggedIn() && checkRole("staff") ? (
+            <HomeStaff />
           ) : (
             <Redirect to="/auth/login" />
           )
