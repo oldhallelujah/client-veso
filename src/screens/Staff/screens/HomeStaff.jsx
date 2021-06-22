@@ -8,8 +8,8 @@ import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
-import AdminRoutes from "../../../routes/adminRoute.jsx";
-import SideBarComponent from "../../Admin/components/Sidebar/Sidebar.component";
+import StaffRoutes from "../../../routes/staffRoute.jsx";
+import SideBarStaffComponent from "../../Staff/components/Sidebar/SidebarStaff.component";
 import LoadingComponent from "../../../components/Loading/Loading.component";
 import { checkSchedule } from "../../../auth/auth";
 
@@ -77,7 +77,7 @@ export default function HomeStaff(props) {
         </div>
       </div>
       <Divider />
-      <SideBarComponent handleDrawerToggle={handleDrawerToggle} />
+      <SideBarStaffComponent handleDrawerToggle={handleDrawerToggle} />
     </div>
   );
 
@@ -139,7 +139,7 @@ export default function HomeStaff(props) {
         style={{ width: "100%", backgroundColor: "white", height: "900px" }}
       >
         <div className={classes.toolbar} />
-        <AdminRoutes handleLoading={handleLoading} data={props} />
+        <StaffRoutes handleLoading={handleLoading} data={props} />
         {showLoading ? <LoadingComponent /> : <></>}
       </main>
     </div>

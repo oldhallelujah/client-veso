@@ -1,0 +1,24 @@
+.main {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 30px;
+  height: 500px;
+  background-color: white;
+  padding: 10px;
+}
+
+.header-title span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sell-item span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.details {
+  width: 100%;
+  height: 400px;
+  background-color: #3f51b5;
+}

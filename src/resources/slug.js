@@ -6,4 +6,8 @@ export default {
   staffManager: "/admin/staff-manager",
   createStaff: "/admin/create-staff",
   detailsStaff: "/admin/details-staff",
+
+  //staff
+  dashboardStaff: "/staff",
+  sell: "/staff/sell",
 };
