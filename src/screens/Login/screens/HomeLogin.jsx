@@ -55,7 +55,7 @@ const HomeLogin = () => {
             <img src={loginImage} alt="" width="60%" />
           </div>
 
-          <div className="form-login mt-5">
+          <div className="form-login mt-4">
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 type="text"

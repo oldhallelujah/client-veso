@@ -186,3 +186,59 @@ export const removeSchedule = async (data) => {
       console.log(error);
     });
 };
+
+export const getAllCustomer = async (ownerID) => {
+  return await axios
+    .get(`${url}/get-all-customer`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const getConfig = async (data) => {
+  return await axios
+    .get(`${url}/get-config`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const statisticStore = async (data) => {
+  return await axios
+    .get(`${url}/statistic-store`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const detailsStatisticStore = async (storeID) => {
+  console.log(storeID);
+  return await axios
+    .get(`${url}/details-statistic-store/${storeID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

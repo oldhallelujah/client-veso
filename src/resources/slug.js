@@ -6,8 +6,13 @@ export default {
   staffManager: "/admin/staff-manager",
   createStaff: "/admin/create-staff",
   detailsStaff: "/admin/details-staff",
+  customerManager: "/admin/customer-manager",
+  statistic: "/admin/statistic-store",
+  detailsStatistic: "/admin/details-statistic-store",
 
   //staff
-  dashboardStaff: "/staff",
-  sell: "/staff/sell",
+  sell: "/staff",
+  storeStaff: "/staff/store",
+  schedule: "/staff/schedule",
+  gift: "/staff/gift",
 };

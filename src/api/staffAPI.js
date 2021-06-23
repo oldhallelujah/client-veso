@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 import { getAccessToken } from "../auth/auth";
 const url = "https://ve-so-nhat-tien.herokuapp.com/api";
 
-const getUserID = () => {
+export const getUserID = () => {
   const token = localStorage.getItem("userToken");
   if (token != null) {
     const tokenJSON = JSON.parse(localStorage.userToken);
@@ -14,9 +14,22 @@ const getUserID = () => {
   }
 };
 
-export const getCustomerStaff = async () => {
+export const addCustomer = async (data) => {
   return await axios
-    .get(`${url}/get-customer-staff/${getUserID()}`, {
+    .post(`${url}/add-customer`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const addDeal = async (data) => {
+  return await axios
+    .post(`${url}/add-deal`, data, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {
@@ -28,9 +41,9 @@ export const getCustomerStaff = async () => {
     });
 };
 
-export const addCustomer = async (data) => {
+export const addGift = async (data) => {
   return await axios
-    .post(`${url}/add-customer`, data, {
+    .post(`${url}/use-point`, data, {
       headers: { Authorization: `${getAccessToken()}` },
     })
     .then((res) => {

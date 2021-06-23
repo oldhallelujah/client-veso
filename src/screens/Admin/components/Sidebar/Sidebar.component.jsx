@@ -152,6 +152,17 @@ export default function SideBarComponent(props) {
           </ListItem>
         </List>
       </Collapse>
+
+      <ListItem
+        button
+        onClick={() => handleClickSlug("customer", slug.customerManager)}
+        className={param == "customer" ? "active" : " "}
+      >
+        <ListItemIcon>
+          <InsertChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Khách hàng" />
+      </ListItem>
     </List>
     // </div>
   );

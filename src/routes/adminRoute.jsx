@@ -7,6 +7,9 @@ import DetailsStore from "../screens/Admin/screens/Details Store/DetailsStore";
 import CreateStaff from "../screens/Admin/screens/Create Staff/CreateStaff";
 import StaffManager from "../screens/Admin/screens/Staff Manager/StaffManager";
 import DetailsStaff from "../screens/Admin/screens/Staff Manager/DetailsStaff";
+import CustomerManager from "../screens/Admin/screens/Customer Manager/CustomerManger";
+import StatisticManager from "../screens/Admin/screens/Statistic Manager/StatisticManager";
+import DetailsStatisticStore from "../screens/Admin/screens/Details Statistic Store/DetailsStatisticStore";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
   const loading = props.handleLoading;
@@ -55,6 +58,29 @@ function AdminRoutes(props) {
           path={slug.detailsStore}
           render={(props) => (
             <DetailsStore
+              handleLoading={loading}
+              query={props.location.search}
+            />
+          )}
+        />
+        <Route
+          exact
+          path={slug.customerManager}
+          render={() => <CustomerManager handleLoading={props.handleLoading} />}
+        />
+        <Route
+          exact
+          path={slug.statistic}
+          render={() => (
+            <StatisticManager handleLoading={props.handleLoading} />
+          )}
+        />
+
+        <Route
+          exact
+          path={slug.detailsStatistic}
+          render={(props) => (
+            <DetailsStatisticStore
               handleLoading={loading}
               query={props.location.search}
             />

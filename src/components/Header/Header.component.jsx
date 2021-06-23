@@ -50,7 +50,7 @@ export default function HeaderAdminComponent(props) {
   };
   return (
     <div className="wrap-header">
-      <div>
+      <div style={{ width: "100%" }}>
         <List dense className={classes.root}>
           <ListItem button onClick={handleClick}>
             <ListItemText primary={userData.fullName} />

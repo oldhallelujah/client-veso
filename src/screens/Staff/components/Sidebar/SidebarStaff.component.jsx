@@ -50,18 +50,8 @@ export default function SideBarComponent(props) {
     <List>
       <ListItem
         button
-        onClick={() => handleClickSlug("overview", slug.dashboard)}
-        className={param == "overview" ? "active" : " "}
-      >
-        <ListItemIcon>
-          <InsertChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Tổng quát" />
-      </ListItem>
-      <ListItem
-        button
         onClick={() => handleClickSlug("sell", slug.sell)}
-        className={param == "sell" ? "sell" : " "}
+        className={param == "sell" ? "active" : " "}
       >
         <ListItemIcon>
           <InsertChartIcon />
@@ -70,8 +60,18 @@ export default function SideBarComponent(props) {
       </ListItem>
       <ListItem
         button
+        onClick={() => handleClickSlug("gift", slug.gift)}
+        className={param == "gift" ? "active" : " "}
+      >
+        <ListItemIcon>
+          <InsertChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Đổi quà" />
+      </ListItem>
+      <ListItem
+        button
         onClick={() => handleClickSlug("store", slug.storeStaff)}
-        className={param == "store" ? "store" : " "}
+        className={param == "store" ? "active" : " "}
       >
         <ListItemIcon>
           <InsertChartIcon />
@@ -81,7 +81,7 @@ export default function SideBarComponent(props) {
       <ListItem
         button
         onClick={() => handleClickSlug("customer", slug.customer)}
-        className={param == "customer" ? "customer" : " "}
+        className={param == "customer" ? "active" : " "}
       >
         <ListItemIcon>
           <InsertChartIcon />
@@ -90,8 +90,8 @@ export default function SideBarComponent(props) {
       </ListItem>
       <ListItem
         button
-        onClick={() => handleClickSlug("customer", slug.StaffSchedule)}
-        className={param == "schedule" ? "customer" : " "}
+        onClick={() => handleClickSlug("schedule", slug.schedule)}
+        className={param == "schedule" ? "active" : " "}
       >
         <ListItemIcon>
           <InsertChartIcon />

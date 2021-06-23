@@ -31,7 +31,7 @@ export default function CreateStore(props) {
     });
   };
   return (
-    <Grid container spacing={1} className="mt-3 main">
+    <Grid container spacing={1} className="mt-3 " style={{ padding: "15px" }}>
       <div className="title-header">
         <span>Thêm đại lý mới</span>
       </div>
