@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import slug from "../../resources/slug";
 
 export default function PopupDealSuccessComponent(props) {
+  const history = useHistory();
   const handleClick = () => {
     history.push(slug.gift);
   };
