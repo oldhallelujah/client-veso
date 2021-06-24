@@ -54,3 +54,17 @@ export const addGift = async (data) => {
       console.log(error);
     });
 };
+
+export const checkSchedule = async () => {
+  return await axios
+    .get(`${url}/check-schedule/${getUserID()}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

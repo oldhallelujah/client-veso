@@ -37,7 +37,7 @@ export default function HomeAdmin(props) {
       );
     });
   return (
-    <Grid container spacing={1} className="main">
+    <Grid container spacing={1} className="main" style={{ marginTop: "20px" }}>
       <div className="title-header">
         <span>Quản lý đại lý - Tổng số ({store.length})</span>
       </div>

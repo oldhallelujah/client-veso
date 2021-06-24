@@ -10,6 +10,7 @@ import DetailsStaff from "../screens/Admin/screens/Staff Manager/DetailsStaff";
 import CustomerManager from "../screens/Admin/screens/Customer Manager/CustomerManger";
 import StatisticManager from "../screens/Admin/screens/Statistic Manager/StatisticManager";
 import DetailsStatisticStore from "../screens/Admin/screens/Details Statistic Store/DetailsStatisticStore";
+import DetailsStatisticCustomer from "../screens/Admin/screens/Details Statistic Customer/DetailsStatisticCustomer";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
   const loading = props.handleLoading;
@@ -81,6 +82,16 @@ function AdminRoutes(props) {
           path={slug.detailsStatistic}
           render={(props) => (
             <DetailsStatisticStore
+              handleLoading={loading}
+              query={props.location.search}
+            />
+          )}
+        />
+        <Route
+          exact
+          path={slug.detailsStatisticCustomer}
+          render={(props) => (
+            <DetailsStatisticCustomer
               handleLoading={loading}
               query={props.location.search}
             />

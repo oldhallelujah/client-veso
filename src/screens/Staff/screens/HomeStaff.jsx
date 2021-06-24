@@ -11,9 +11,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import StaffRoutes from "../../../routes/staffRoute.jsx";
 import SideBarStaffComponent from "../../Staff/components/Sidebar/SidebarStaff.component";
 import LoadingComponent from "../../../components/Loading/Loading.component";
-import { checkSchedule } from "../../../auth/auth";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { checkSchedule, getUserID } from "../../../api/staffAPI";
+import { getDetailsStaff } from "../../../api/adminAPI";
+import { useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -50,23 +52,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function HomeStaff(props) {
+  const history = useHistory();
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [showLoading, setShowLoading] = useState(true);
+  const [store, setStore] = useState();
   const handleLoading = (status) => {
     setShowLoading(status);
   };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const [schedule, setSchedule] = useState();
 
   useEffect(async () => {
-    const check = await checkSchedule();
-    if (!check) {
-      alert("Bạn chưa có lịch trực cho ngày hôm nay");
-    }
+    await checkSchedule().then((res) => {
+      setSchedule(res.data);
+    });
+    await getDetailsStaff(await getUserID()).then((res) => {
+      if (res.data.staff.block) {
+        alert("Tài khoản của bạn đã bị khóa");
+        localStorage.clear();
+        history.push("/auth/login");
+      }
+      setStore(res.data.store.activate);
+    });
   }, []);
 
   const drawer = (
@@ -139,7 +151,20 @@ export default function HomeStaff(props) {
         style={{ width: "100%", backgroundColor: "white", height: "900px" }}
       >
         <div className={classes.toolbar} />
-        <StaffRoutes handleLoading={handleLoading} data={props} />
+        {schedule ? (
+          <StaffRoutes
+            handleLoading={handleLoading}
+            data={props}
+            store={store}
+          />
+        ) : (
+          <div style={{ padding: "20px" }}>
+            <span style={{ color: "red", fontSize: "17px" }}>
+              Bạn chưa có lịch trực trong ngày hôm nay
+            </span>
+          </div>
+        )}
+
         {showLoading ? <LoadingComponent /> : <></>}
       </main>
     </div>

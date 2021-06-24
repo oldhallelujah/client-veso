@@ -136,20 +136,6 @@ export default function SideBarComponent(props) {
             </ListItemIcon>
             <ListItemText primary="Tạo tài khoản" />
           </ListItem>
-          <ListItem
-            button
-            className={
-              classes.nested + (param == "statisticStaff" ? " active" : "")
-            }
-            onClick={() =>
-              handleClickSlug("statisticStaff", slug.statisticStaff)
-            }
-          >
-            <ListItemIcon>
-              <PersonAddIcon />
-            </ListItemIcon>
-            <ListItemText primary="Thống kê" />
-          </ListItem>
         </List>
       </Collapse>
 

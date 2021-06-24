@@ -10,28 +10,36 @@ function StaffRoutes(props) {
   const loading = props.handleLoading;
   return (
     <>
-      <Switch>
-        <Route
-          exact
-          path={slug.sell}
-          render={() => <SellStaff handleLoading={props.handleLoading} />}
-        />
-        <Route
-          exact
-          path={slug.storeStaff}
-          render={() => <StoreStaff handleLoading={props.handleLoading} />}
-        />
-        <Route
-          exact
-          path={slug.gift}
-          render={() => <GiftStaff handleLoading={props.handleLoading} />}
-        />
-        <Route
-          exact
-          path={slug.schedule}
-          render={() => <ScheduleStaff handleLoading={props.handleLoading} />}
-        />
-      </Switch>
+      {props.store ? (
+        <Switch>
+          <Route
+            exact
+            path={slug.sell}
+            render={() => <SellStaff handleLoading={props.handleLoading} />}
+          />
+          <Route
+            exact
+            path={slug.storeStaff}
+            render={() => <StoreStaff handleLoading={props.handleLoading} />}
+          />
+          <Route
+            exact
+            path={slug.gift}
+            render={() => <GiftStaff handleLoading={props.handleLoading} />}
+          />
+          <Route
+            exact
+            path={slug.schedule}
+            render={() => <ScheduleStaff handleLoading={props.handleLoading} />}
+          />
+        </Switch>
+      ) : (
+        <div style={{ padding: "20px" }}>
+          <span style={{ color: "red", fontSize: "17px" }}>
+            Cửa hàng bạn không hoạt động
+          </span>
+        </div>
+      )}
     </>
   );
 }

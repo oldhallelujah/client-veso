@@ -30,7 +30,13 @@ export default function SellStaff(props) {
     props.handleLoading(true);
 
     await getAllCustomer().then((res) => {
-      setCustomerStore(res.data);
+      console.log(res.data);
+      const list = res.data.sort((a, b) => {
+        console.log(a);
+        console.log(b);
+        return new Date(b.customer.createAt) - new Date(a.customer.createAt);
+      });
+      setCustomerStore(list);
       console.log(res);
       props.handleLoading(false);
     });

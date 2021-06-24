@@ -242,3 +242,17 @@ export const detailsStatisticStore = async (storeID) => {
       console.log(error);
     });
 };
+
+export const detailsStatisticCustomer = async (customerID) => {
+  return await axios
+    .get(`${url}/details-statistic-customer/${customerID}`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

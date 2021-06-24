@@ -9,6 +9,7 @@ export default {
   customerManager: "/admin/customer-manager",
   statistic: "/admin/statistic-store",
   detailsStatistic: "/admin/details-statistic-store",
+  detailsStatisticCustomer: "/admin/details-statistic-customer",
 
   //staff
   sell: "/staff",

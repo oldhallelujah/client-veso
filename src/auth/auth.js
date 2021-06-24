@@ -58,11 +58,3 @@ export const getAccessToken = () => {
     return accessToken;
   }
 };
-
-export const checkSchedule = () => {
-  const schedule = localStorage.getItem("schedule");
-  if (schedule != null) {
-    const scheduleJSON = JSON.parse(localStorage.schedule);
-    return scheduleJSON;
-  }
-};
