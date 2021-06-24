@@ -10,6 +10,10 @@ export default {
   statistic: "/admin/statistic-store",
   detailsStatistic: "/admin/details-statistic-store",
   detailsStatisticCustomer: "/admin/details-statistic-customer",
+  configPoint: "/admin/config-point",
+  configGift: "/admin/config-gift",
+  giftManager: "/admin/gift-manager",
+  changePassword: "/auth/change-password",
 
   //staff
   sell: "/staff",

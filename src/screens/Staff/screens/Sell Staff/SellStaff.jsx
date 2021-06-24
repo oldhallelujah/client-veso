@@ -150,6 +150,7 @@ export default function SellStaff(props) {
               variant="outlined"
               style={{ width: "100%" }}
               onChange={hanldeChangeCode}
+              type="number"
             />
           </div>
         </div>
@@ -161,6 +162,7 @@ export default function SellStaff(props) {
               variant="outlined"
               style={{ width: "100%" }}
               onChange={handleChangeQuantity}
+              type="number"
             />
           </div>
         </div>

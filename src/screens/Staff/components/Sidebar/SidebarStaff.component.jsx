@@ -78,16 +78,7 @@ export default function SideBarComponent(props) {
         </ListItemIcon>
         <ListItemText primary="Đại lý" />
       </ListItem>
-      <ListItem
-        button
-        onClick={() => handleClickSlug("customer", slug.customer)}
-        className={param == "customer" ? "active" : " "}
-      >
-        <ListItemIcon>
-          <InsertChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Khách hàng" />
-      </ListItem>
+
       <ListItem
         button
         onClick={() => handleClickSlug("schedule", slug.schedule)}

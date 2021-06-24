@@ -11,6 +11,9 @@ import CustomerManager from "../screens/Admin/screens/Customer Manager/CustomerM
 import StatisticManager from "../screens/Admin/screens/Statistic Manager/StatisticManager";
 import DetailsStatisticStore from "../screens/Admin/screens/Details Statistic Store/DetailsStatisticStore";
 import DetailsStatisticCustomer from "../screens/Admin/screens/Details Statistic Customer/DetailsStatisticCustomer";
+import ConfigPoint from "../screens/Admin/screens/Config Manager/ConfigPoint";
+import ConfigGift from "../screens/Admin/screens/Config Manager/ConfigGift";
+import GiftManager from "../screens/Admin/screens/Gift Manager/GiftManager";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
   const loading = props.handleLoading;
@@ -96,6 +99,23 @@ function AdminRoutes(props) {
               query={props.location.search}
             />
           )}
+        />
+
+        <Route
+          exact
+          path={slug.configPoint}
+          render={() => <ConfigPoint handleLoading={props.handleLoading} />}
+        />
+        <Route
+          exact
+          path={slug.configGift}
+          render={() => <ConfigGift handleLoading={props.handleLoading} />}
+        />
+
+        <Route
+          exact
+          path={slug.giftManager}
+          render={() => <GiftManager handleLoading={props.handleLoading} />}
         />
       </Switch>
     </>

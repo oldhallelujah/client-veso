@@ -11,7 +11,7 @@ export const getRole = async () => {
   }
 };
 
-export const isLoggedIn = async () => {
+export const isLoggedIn = () => {
   const token = localStorage.getItem("userToken");
   if (token != null) {
     const tokenJSON = JSON.parse(localStorage.userToken);

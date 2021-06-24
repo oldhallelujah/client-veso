@@ -11,6 +11,8 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import Divider from "@material-ui/core/Divider";
+
 import "./sidebar.css";
 import slug from "../../../../resources/slug";
 
@@ -31,6 +33,7 @@ export default function SideBarComponent(props) {
   const [param, setParam] = React.useState("overview");
   const [open, setOpen] = React.useState(true);
   const [open1, setOpen1] = React.useState(true);
+  const [open2, setOpen2] = React.useState(true);
   const handleClickSlug = (param, url) => {
     props.handleDrawerToggle();
     setParam(param);
@@ -41,6 +44,9 @@ export default function SideBarComponent(props) {
   };
   const handleClick1 = () => {
     setOpen1(!open1);
+  };
+  const handleClick2 = () => {
+    setOpen2(!open2);
   };
   return (
     // <div>
@@ -103,14 +109,14 @@ export default function SideBarComponent(props) {
           </ListItem>
         </List>
       </Collapse>
-      <ListItem button onClick={handleClick}>
+      <ListItem button onClick={handleClick1}>
         <ListItemIcon>
           <InsertChartIcon />
         </ListItemIcon>
         <ListItemText primary="Nhân viên" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        {open1 ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open1} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem
             button
@@ -149,6 +155,55 @@ export default function SideBarComponent(props) {
         </ListItemIcon>
         <ListItemText primary="Khách hàng" />
       </ListItem>
+
+      <ListItem
+        button
+        onClick={() => handleClickSlug("gift", slug.giftManager)}
+        className={param == "gift" ? "active" : " "}
+      >
+        <ListItemIcon>
+          <InsertChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Quà tặng" />
+      </ListItem>
+
+      <Divider />
+
+      <ListItem button onClick={handleClick2}>
+        <ListItemIcon>
+          <InsertChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cấu hình" />
+        {open2 ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open2} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem
+            button
+            className={
+              classes.nested + (param == "configPoint" ? " active" : "")
+            }
+            onClick={() => handleClickSlug("configPoint", slug.configPoint)}
+          >
+            <ListItemIcon>
+              <AssignmentIndIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tích điểm" />
+          </ListItem>
+          <ListItem
+            button
+            className={
+              classes.nested + (param == "configGift" ? " active" : "")
+            }
+            onClick={() => handleClickSlug("configGift", slug.configGift)}
+          >
+            <ListItemIcon>
+              <PersonAddIcon />
+            </ListItemIcon>
+            <ListItemText primary="Quà tặng" />
+          </ListItem>
+        </List>
+      </Collapse>
     </List>
     // </div>
   );

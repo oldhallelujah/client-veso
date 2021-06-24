@@ -256,3 +256,44 @@ export const detailsStatisticCustomer = async (customerID) => {
       console.log(error);
     });
 };
+
+export const updateConfigPoint = async (data) => {
+  return await axios
+    .post(`${url}/update-config-point`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const updateConfigGift = async (data) => {
+  return await axios
+    .post(`${url}/update-config-gift`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const statisticGift = async () => {
+  return await axios
+    .get(`${url}/statistic-gift`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

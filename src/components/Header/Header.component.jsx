@@ -25,6 +25,7 @@ export default function HeaderAdminComponent(props) {
     fullName: "",
     phoneNumber: "",
     email: "",
+    role: "",
   });
   useEffect(async () => {
     await getProfile().then((res) => {

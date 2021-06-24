@@ -28,3 +28,17 @@ export const getProfile = async () => {
       console.log(error);
     });
 };
+
+export const updatePassword = async (data) => {
+  return await axios
+    .post(`${url}/update-password`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

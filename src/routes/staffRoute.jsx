@@ -34,10 +34,13 @@ function StaffRoutes(props) {
           />
         </Switch>
       ) : (
-        <div style={{ padding: "20px" }}>
-          <span style={{ color: "red", fontSize: "17px" }}>
-            Cửa hàng bạn không hoạt động
-          </span>
+        <div>
+          {props.handleLoading(false)}
+          <div style={{ padding: "20px" }}>
+            <span style={{ color: "red", fontSize: "17px" }}>
+              Cửa hàng bạn không hoạt động
+            </span>
+          </div>
         </div>
       )}
     </>

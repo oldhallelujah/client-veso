@@ -7,7 +7,11 @@ export default function CustomerSelectComponent(props) {
   const [defaultValue, setDefaultValue] = useState();
   useEffect(() => {}, [props.reload]);
   const handleChange = (event, value) => {
-    props.handleChangeCustomer(value);
+    if (value) {
+      props.handleChangeCustomer(value);
+    } else {
+      props.handleChangeCustomer("");
+    }
   };
 
   return (
