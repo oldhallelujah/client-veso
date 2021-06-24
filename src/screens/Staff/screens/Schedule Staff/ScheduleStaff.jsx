@@ -9,6 +9,7 @@ export default function ScheduleStaff(props) {
 
   const [month, setMonth] = useState(false);
   useEffect(async () => {
+    props.handleLoading(true);
     await getSchedule(getUserID()).then((res) => {
       console.log(res.data);
       setSchedule(res.data);
