@@ -92,7 +92,7 @@ export default function GiftStaff(props) {
     }
   };
   const handleUseGift = async () => {
-    if (customer?.wallet?.remainPoint <= config?.giftConfig?.point * quantity) {
+    if (customer?.wallet?.remainPoint < config?.giftConfig?.point * quantity) {
       alert("Số điểm vượt quá số điểm hiện có");
     } else {
       const data = {
