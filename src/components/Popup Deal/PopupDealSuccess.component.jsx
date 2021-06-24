@@ -3,8 +3,13 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
+import slug from "../../resources/slug";
 
 export default function PopupDealSuccessComponent(props) {
+  const handleClick = () => {
+    history.push(slug.gift);
+  };
   return (
     <Dialog
       onClose={props.onClose}
@@ -20,7 +25,9 @@ export default function PopupDealSuccessComponent(props) {
         }}
       >
         {props?.usePoint ? (
-          <span style={{ color: "green" }}>Khách hàng đã đủ điểm đổi quà</span>
+          <span style={{ color: "green" }} onClick={handleClick}>
+            Khách hàng đã đủ điểm đổi quà
+          </span>
         ) : (
           <span style={{ color: "red" }}>Khách hàng chưa đủ điểm đổi quà</span>
         )}
