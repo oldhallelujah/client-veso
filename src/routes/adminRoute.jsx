@@ -17,13 +17,13 @@ function AdminRoutes(props) {
   return (
     <>
       <Switch>
-        <Route
+        {/* <Route
           exact
           path={slug.dashboard}
           render={() => (
             <DashboardComponent handleLoading={props.handleLoading} />
           )}
-        />
+        /> */}
         <Route
           exact
           path={slug.storeManager}

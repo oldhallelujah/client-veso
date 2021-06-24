@@ -48,7 +48,7 @@ export default function SideBarComponent(props) {
     //     <img src={logo} alt="" width="100%" />
     //   </div>
     <List>
-      <ListItem
+      {/* <ListItem
         button
         onClick={() => handleClickSlug("overview", slug.dashboard)}
         className={param == "overview" ? "active" : " "}
@@ -57,7 +57,7 @@ export default function SideBarComponent(props) {
           <InsertChartIcon />
         </ListItemIcon>
         <ListItemText primary="Tổng quát" />
-      </ListItem>
+      </ListItem> */}
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <InsertChartIcon />
