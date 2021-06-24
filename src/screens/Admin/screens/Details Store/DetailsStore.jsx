@@ -18,6 +18,7 @@ export default function DetailsStore(props) {
   const [openAddStaff, setOpenAddStaff] = useState(false);
   const [reload, setReload] = useState(false);
   useEffect(async () => {
+    props.handleLoading(true);
     getDetailsStore(storeID).then((res) => {
       setDetails(res.data);
       props.handleLoading(false);

@@ -41,7 +41,7 @@ const HomeLogin = () => {
       if (res === "staff") {
         history.push("/staff");
       } else if (res === "admin") {
-        history.push("/admin");
+        history.push("/admin/store-manager");
       }
       setShowLoading(false);
     });
