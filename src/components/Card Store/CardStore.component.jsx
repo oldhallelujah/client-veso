@@ -3,6 +3,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
+
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +49,23 @@ export default function CardStoreComponent(props) {
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
             {converDate(props.data?.store.createAt)}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            {props.data?.store.activate ? (
+              <Chip
+                variant="outlined"
+                size="small"
+                style={{ color: "green" }}
+                label="Hoạt động"
+              />
+            ) : (
+              <Chip
+                variant="outlined"
+                size="small"
+                style={{ color: "red" }}
+                label="Dừng hoạt động"
+              />
+            )}
           </Typography>
         </CardContent>
       </div>

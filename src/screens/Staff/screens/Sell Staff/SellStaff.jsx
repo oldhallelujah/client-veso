@@ -103,12 +103,19 @@ export default function SellStaff(props) {
         },
       ],
     };
+
     await addDeal(data).then((res) => {
-      console.log(res);
-      if (customer?.wallet?.remainPoint + point >= config?.giftConfig?.point) {
-        setUsePoint(true);
+      if (res === 500) {
+        alert("Đã hết thời gian cập nhật giao dịch");
+      } else {
+        if (
+          customer?.wallet?.remainPoint + point >=
+          config?.giftConfig?.point
+        ) {
+          setUsePoint(true);
+        }
+        setOpenPopup(true);
       }
-      setOpenPopup(true);
     });
   };
 
@@ -162,7 +169,6 @@ export default function SellStaff(props) {
               variant="outlined"
               style={{ width: "100%" }}
               onChange={handleChangeQuantity}
-              type="number"
             />
           </div>
         </div>

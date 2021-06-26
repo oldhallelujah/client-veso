@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TableComponent from "../../../../components/Table/Table.component";
-import { getAllCustomer } from "../../../../api/adminAPI";
+import { getAllCustomer, getSearchPoint } from "../../../../api/adminAPI";
 import Grid from "@material-ui/core/Grid";
 import CustomerSelectComponent from "../../../../components/Customer Select/CustomerSelect.component";
 import Chip from "@material-ui/core/Chip";
@@ -12,10 +12,14 @@ export default function CustomerManager(props) {
   const [customer, setCustomer] = useState([]);
   const [customerSelect, setCustomerSelect] = useState("");
   const [search, setSearch] = useState("");
+  const [point, setPoint] = useState([]);
   useEffect(async () => {
     props.handleLoading(true);
     await getAllCustomer().then((res) => {
       setCustomer(res.data);
+    });
+    await getSearchPoint().then((res) => {
+      setPoint(res.data.listsPoint);
       props.handleLoading(false);
     });
   }, []);
@@ -44,6 +48,9 @@ export default function CustomerManager(props) {
       } else {
         return customer;
       }
+    })
+    .sort((a, b) => {
+      return new Date(b.customer.createAt) - new Date(a.customer.createAt);
     })
     .map((e, index) => {
       return {
@@ -99,6 +106,26 @@ export default function CustomerManager(props) {
     setSearch(value);
   };
 
+  const lists = point
+    .sort((a, b) => {
+      return a.point - b.point;
+    })
+    .map((e, index) => {
+      return (
+        <Chip
+          variant="outlined"
+          size="small"
+          style={{ color: "green" }}
+          label={"> " + e.point + " điểm"}
+          className={"ml-2 mt-2 " + (search === e.point ? "active" : "")}
+          onClick={() => {
+            handleSearch(e.point);
+          }}
+          key={index}
+        />
+      );
+    });
+
   return (
     <Grid className="main">
       <div className="title-header">
@@ -120,38 +147,9 @@ export default function CustomerManager(props) {
           onClick={() => {
             handleSearch("all");
           }}
-          className={search === "all" || "" ? "active" : ""}
+          className={" mt-2 " + (search === "all" || "" ? "active" : "")}
         />
-        <Chip
-          variant="outlined"
-          size="small"
-          style={{ color: "green" }}
-          label="> 50 điểm"
-          className={"ml-2 " + (search === 50 ? "active" : "")}
-          onClick={() => {
-            handleSearch(50);
-          }}
-        />
-        <Chip
-          variant="outlined"
-          size="small"
-          style={{ color: "green" }}
-          label="> 100 điểm"
-          className={"ml-2 " + (search === 100 ? "active" : "")}
-          onClick={() => {
-            handleSearch(100);
-          }}
-        />
-        <Chip
-          variant="outlined"
-          size="small"
-          style={{ color: "green" }}
-          label="> 200 điểm"
-          className={"ml-2 " + (search === 200 ? "active" : "")}
-          onClick={() => {
-            handleSearch(200);
-          }}
-        />
+        {lists}
       </div>
       <hr />
       <div className="mt-3">

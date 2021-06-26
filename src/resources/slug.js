@@ -12,6 +12,7 @@ export default {
   detailsStatisticCustomer: "/admin/details-statistic-customer",
   configPoint: "/admin/config-point",
   configGift: "/admin/config-gift",
+  configSearch: "/admin/config-search",
   giftManager: "/admin/gift-manager",
   changePassword: "/auth/change-password",
 
@@ -20,4 +21,5 @@ export default {
   storeStaff: "/staff/store",
   schedule: "/staff/schedule",
   gift: "/staff/gift",
+  overview: "/staff/overview",
 };

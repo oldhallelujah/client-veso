@@ -6,8 +6,11 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 export default function StoreSelectComponent(props) {
   const [defaultValue, setDefaultValue] = useState();
   const handleChange = (event, value) => {
-    console.log(value);
-    props.handleChangeStore(value);
+    if (value) {
+      props.handleChangeStore(value);
+    } else {
+      props.handleChangeStore("");
+    }
   };
 
   return (

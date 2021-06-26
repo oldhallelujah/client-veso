@@ -34,10 +34,11 @@ export const addDeal = async (data) => {
     })
     .then((res) => {
       console.log(res);
-      return res.data;
+      return res;
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.status);
+      return error.response.status;
     });
 };
 

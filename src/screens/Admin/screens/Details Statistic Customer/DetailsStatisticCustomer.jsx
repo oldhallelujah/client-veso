@@ -44,6 +44,9 @@ export default function DetailsStatiscCustomer(props) {
           return deal;
         }
       })
+      .sort((a, b) => {
+        return new Date(b.deal.created) - new Date(a.deal.created);
+      })
       .map((e, index) => {
         return {
           id: index + 1,

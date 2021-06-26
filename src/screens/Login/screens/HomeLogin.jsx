@@ -31,7 +31,8 @@ const HomeLogin = () => {
       setPassword(value);
     }
   };
-  const handleClickLogin = async () => {
+  const handleClickLogin = async (event) => {
+    event.preventDefault();
     setShowLoading(true);
     const data = {
       username: username,
@@ -56,7 +57,12 @@ const HomeLogin = () => {
           </div>
 
           <div className="form-login mt-4">
-            <form className={classes.root} noValidate autoComplete="off">
+            <form
+              className={classes.root}
+              noValidate
+              autoComplete="off"
+              onSubmit={handleClickLogin}
+            >
               <TextField
                 type="text"
                 label="Tài khoản"
@@ -72,11 +78,13 @@ const HomeLogin = () => {
                 onChange={handleChangeInput}
                 required
               />
+              <button type="submit" style={{ display: "none" }}></button>
             </form>
-          </div>
-
-          <div style={{ marginTop: "60px" }} onClick={handleClickLogin}>
-            <a className="btn-login">Đăng nhập</a>
+            <div style={{ marginTop: "60px" }}>
+              <a className="btn-login" onClick={handleClickLogin}>
+                Đăng nhập
+              </a>
+            </div>
           </div>
         </div>
       </div>

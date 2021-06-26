@@ -13,6 +13,7 @@ import DetailsStatisticStore from "../screens/Admin/screens/Details Statistic St
 import DetailsStatisticCustomer from "../screens/Admin/screens/Details Statistic Customer/DetailsStatisticCustomer";
 import ConfigPoint from "../screens/Admin/screens/Config Manager/ConfigPoint";
 import ConfigGift from "../screens/Admin/screens/Config Manager/ConfigGift";
+import ConfigSearch from "../screens/Admin/screens/Config Manager/ConfigSearch";
 import GiftManager from "../screens/Admin/screens/Gift Manager/GiftManager";
 function AdminRoutes(props) {
   //   <Route exact path={SLUGS.dashboard} component={DashboardComponent} />;
@@ -116,6 +117,11 @@ function AdminRoutes(props) {
           exact
           path={slug.giftManager}
           render={() => <GiftManager handleLoading={props.handleLoading} />}
+        />
+        <Route
+          exact
+          path={slug.configSearch}
+          render={() => <ConfigSearch handleLoading={props.handleLoading} />}
         />
       </Switch>
     </>

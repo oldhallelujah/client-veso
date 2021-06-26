@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
+import Button from "@material-ui/core/Button";
+
 import moment from "moment";
 import BlockStaffComponent from "../Block Staff/BlockStaff.component";
+import UpdatePasswordComponent from "../Update Password/UpdatePassword.component";
 const converDate = (date) => {
   return moment(date).format("DD/MM/YYYY");
 };
 export default function ProfileStaffComponent(props) {
   console.log(props);
   const [open, setOpen] = useState(false);
+  const [openPass, setOpenPass] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
@@ -18,7 +22,15 @@ export default function ProfileStaffComponent(props) {
 
   const handleReload = () => {
     setOpen(false);
+    setOpenPass(false);
     props.handleReload();
+  };
+
+  const handleClickUpdatePass = () => {
+    setOpenPass(true);
+  };
+  const handleClosePass = () => {
+    setOpenPass(false);
   };
 
   const status = (status) => {
@@ -92,12 +104,28 @@ export default function ProfileStaffComponent(props) {
             {status(props.data?.staff.block)}
           </Grid>
         </Grid>
-        <div className="mt-3" style={{ float: "right" }}></div>
+        <div className="mt-3" style={{ width: "100%", textAlign: "center" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ width: "50%", padding: "10px" }}
+            className="mt-3"
+            onClick={handleClickUpdatePass}
+          >
+            Đổi mật khẩu
+          </Button>
+        </div>
       </div>
       <BlockStaffComponent
         data={props.data}
         open={open}
         onClose={handleClose}
+        handleReload={handleReload}
+      />
+      <UpdatePasswordComponent
+        open={openPass}
+        onClose={handleClosePass}
+        data={props.data}
         handleReload={handleReload}
       />
     </div>

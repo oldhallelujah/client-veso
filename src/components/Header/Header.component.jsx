@@ -64,7 +64,6 @@ export default function HeaderAdminComponent(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Tài khoản</MenuItem>
           <MenuItem onClick={handlChangePassword}>Đổi mật khẩu</MenuItem>
           <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
         </Menu>

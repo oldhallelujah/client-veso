@@ -202,6 +202,18 @@ export default function SideBarComponent(props) {
             </ListItemIcon>
             <ListItemText primary="Quà tặng" />
           </ListItem>
+          <ListItem
+            button
+            className={
+              classes.nested + (param == "configSearch" ? " active" : "")
+            }
+            onClick={() => handleClickSlug("configSearch", slug.configSearch)}
+          >
+            <ListItemIcon>
+              <PersonAddIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tìm theo điểm" />
+          </ListItem>
         </List>
       </Collapse>
     </List>

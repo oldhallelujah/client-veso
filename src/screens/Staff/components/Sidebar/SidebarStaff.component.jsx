@@ -28,7 +28,7 @@ export default function SideBarComponent(props) {
   const history = useHistory();
   const classes = useStyles();
 
-  const [param, setParam] = React.useState("overview");
+  const [param, setParam] = React.useState("sell");
   const [open, setOpen] = React.useState(true);
   const [open1, setOpen1] = React.useState(true);
   const handleClickSlug = (param, url) => {
@@ -67,6 +67,16 @@ export default function SideBarComponent(props) {
           <InsertChartIcon />
         </ListItemIcon>
         <ListItemText primary="Đổi quà" />
+      </ListItem>
+      <ListItem
+        button
+        onClick={() => handleClickSlug("overview", slug.overview)}
+        className={param == "overview" ? "active" : " "}
+      >
+        <ListItemIcon>
+          <InsertChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Thống kê" />
       </ListItem>
       <ListItem
         button

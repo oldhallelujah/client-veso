@@ -297,3 +297,71 @@ export const statisticGift = async () => {
       console.log(error);
     });
 };
+
+export const updatePasswordStaff = async (data) => {
+  return await axios
+    .post(`${url}/update-password-staff`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const addSearchPoint = async (data) => {
+  return await axios
+    .post(`${url}/add-search-point`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const getSearchPoint = async () => {
+  return await axios
+    .get(`${url}/get-search-point`, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const updateSearchPoint = async (data) => {
+  return await axios
+    .post(`${url}/update-search-point`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteSearchPoint = async (data) => {
+  return await axios
+    .post(`${url}/delete-search-point`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
