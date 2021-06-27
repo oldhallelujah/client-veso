@@ -9,10 +9,10 @@ export default function UpdateSearchPointComponent(props) {
   console.log(props);
   const [point, setPoint] = useState();
   useEffect(() => {
-    if (props.data.point) {
+    if (props.data?.point) {
       setPoint(props.data?.point);
     }
-  }, [props.data.point]);
+  }, [props.data?.point]);
   const handleSubmit = async () => {
     if (point) {
       const data = {
@@ -26,7 +26,6 @@ export default function UpdateSearchPointComponent(props) {
       alert("Điểm không được để trống");
     }
   };
-  console.log(point);
   const handleSubmitDelete = async () => {
     const data = {
       pointID: props.data?._id,
