@@ -31,6 +31,7 @@ export default function StaffManager(props) {
     const data = {
       staffID: value,
     };
+    props.handleLoading(true);
     await deleteStaff(data).then((res) => {
       setReload(!reload);
     });
