@@ -6,11 +6,14 @@ import slug from "../../../../resources/slug";
 import { useHistory } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { deleteStaff } from "../../../../api/adminAPI";
+import ConfirmDelete from "../../../../components/Confirm Delete/ConfirmDelete";
 
 export default function StaffManager(props) {
   const history = useHistory();
   const [staff, setStaff] = useState([]);
   const [reload, setReload] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [id, setID] = useState("");
   useEffect(async () => {
     props.handleLoading(true);
 
@@ -27,14 +30,24 @@ export default function StaffManager(props) {
   const handleClick = (id) => {
     history.push({ pathname: slug.detailsStaff, search: `?id=${id}` });
   };
-  const handleClickDelete = async (value) => {
+  const handleClickDelete = async () => {
     const data = {
-      staffID: value,
+      staffID: id,
     };
+    setOpen(false);
     props.handleLoading(true);
     await deleteStaff(data).then((res) => {
       setReload(!reload);
     });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickModal = (id) => {
+    setID(id);
+    setOpen(true);
   };
   const columns = [
     { field: "id", headerName: "STT", width: 110 },
@@ -91,7 +104,7 @@ export default function StaffManager(props) {
         return (
           <DeleteIcon
             style={{ color: "red" }}
-            onClick={() => handleClickDelete(action.row.action)}
+            onClick={() => handleClickModal(action.row.action)}
           />
         );
       },
@@ -116,6 +129,12 @@ export default function StaffManager(props) {
 
         <TableComponent rows={rows} columns={columns} />
       </div>
+      <ConfirmDelete
+        open={open}
+        id={id}
+        handleClose={handleClose}
+        handleClickDelete={handleClickDelete}
+      />
     </div>
   );
 }
