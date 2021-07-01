@@ -4,21 +4,36 @@ import { getStaff } from "../../../../api/adminAPI";
 import Chip from "@material-ui/core/Chip";
 import slug from "../../../../resources/slug";
 import { useHistory } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { deleteStaff } from "../../../../api/adminAPI";
 
 export default function StaffManager(props) {
   const history = useHistory();
   const [staff, setStaff] = useState([]);
+  const [reload, setReload] = useState(false);
   useEffect(async () => {
     props.handleLoading(true);
 
     await getStaff().then((res) => {
-      setStaff(res.data);
+      setStaff(
+        res.data.sort((a, b) => {
+          return new Date(b.staff.createAt) - new Date(a.staff.createAt);
+        })
+      );
       props.handleLoading(false);
     });
-  }, []);
+  }, [reload]);
 
   const handleClick = (id) => {
     history.push({ pathname: slug.detailsStaff, search: `?id=${id}` });
+  };
+  const handleClickDelete = async (value) => {
+    const data = {
+      staffID: value,
+    };
+    await deleteStaff(data).then((res) => {
+      setReload(!reload);
+    });
   };
   const columns = [
     { field: "id", headerName: "STT", width: 110 },
@@ -45,8 +60,8 @@ export default function StaffManager(props) {
       field: "status",
       headerName: "Trạng thái",
       width: 150,
-      renderCell: (status) => {
-        if (!status.row.status) {
+      renderCell: (block) => {
+        if (!block.row.block) {
           return (
             <Chip
               variant="outlined"
@@ -67,6 +82,19 @@ export default function StaffManager(props) {
         }
       },
     },
+    {
+      field: "action",
+      headerName: "Chức năng",
+      width: 145,
+      renderCell: (action) => {
+        return (
+          <DeleteIcon
+            style={{ color: "red" }}
+            onClick={() => handleClickDelete(action.row.action)}
+          />
+        );
+      },
+    },
   ];
 
   const rows = staff.map((e, index) => {
@@ -77,6 +105,7 @@ export default function StaffManager(props) {
       phoneNumber: e.staff.phoneNumber,
       store: e.store.storeName,
       block: e.staff.block,
+      action: e.staff._id,
     };
   });
   return (

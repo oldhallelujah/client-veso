@@ -365,3 +365,17 @@ export const deleteSearchPoint = async (data) => {
       console.log(error);
     });
 };
+
+export const deleteStaff = async (data) => {
+  return await axios
+    .post(`${url}/delete-staff`, data, {
+      headers: { Authorization: `${getAccessToken()}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

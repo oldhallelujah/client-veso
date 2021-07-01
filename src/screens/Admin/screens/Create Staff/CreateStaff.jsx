@@ -40,7 +40,10 @@ export default function CreateStaff(props) {
       username: username,
       password: password,
     };
-    await createStaff(data).then((res) => props.handleLoading(false));
+    await createStaff(data).then((res) => {
+      props.handleLoading(false);
+      history.push(slug.staffManager);
+    });
   };
   return (
     <Grid container spacing={1} className="mt-3 main">
