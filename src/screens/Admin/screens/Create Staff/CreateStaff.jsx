@@ -31,8 +31,6 @@ export default function CreateStaff(props) {
     }
   };
   const handleSumbit = async (event) => {
-    props.handleLoading(true);
-
     event.preventDefault();
     const data = {
       fullName: fullName,
@@ -40,6 +38,8 @@ export default function CreateStaff(props) {
       username: username,
       password: password,
     };
+    props.handleLoading(true);
+
     await createStaff(data).then((res) => {
       props.handleLoading(false);
       history.push(slug.staffManager);
